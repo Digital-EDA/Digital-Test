@@ -1,9 +1,3 @@
-# Digital-Test
-
-
-默认property.json:
-
-```json
 {
 	"toolChain": "xilinx",
 	"prjName": {
@@ -15,4 +9,3 @@
 	"enableShowLog": false,
 	"device": "none"
 }
-```
