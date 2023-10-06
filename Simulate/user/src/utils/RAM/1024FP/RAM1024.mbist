@@ -1,0 +1,91 @@
+//     Copyright (c) 2022 SMIC             
+//     Filename:      RAM1024.mbist
+//     IP code:       S018RF2P
+//     Version:       0.2.b
+//     CreateDate:    Sep 11, 2022        
+                    
+//    Mentor Mbist for 2-PORT Register File
+//    SMIC 0.18um G Logic Process
+
+//    Configuration: -instname RAM1024 -rows 256 -bits 24 -mux 4 
+//    Redundancy: Off
+ //   Bit-Write: Off
+
+// DISCLAIMER                                                                      //
+//                                                                                 //  
+//   SMIC hereby provides the quality information to you but makes no claims,      //
+// promises or guarantees about the accuracy, completeness, or adequacy of the     //
+// information herein. The information contained herein is provided on an "AS IS"  //
+// basis without any warranty, and SMIC assumes no obligation to provide support   //
+// of any kind or otherwise maintain the information.                              //  
+//   SMIC disclaims any representation that the information does not infringe any  //
+// intellectual property rights or proprietary rights of any third parties. SMIC   //
+// makes no other warranty, whether express, implied or statutory as to any        //
+// matter whatsoever, including but not limited to the accuracy or sufficiency of  //
+// any information or the merchantability and fitness for a particular purpose.    //
+// Neither SMIC nor any of its representatives shall be liable for any cause of    //
+// action incurred to connect to this service.                                     //  
+//                                                                                 //
+// STATEMENT OF USE AND CONFIDENTIALITY                                            //  
+//                                                                                 //  
+//   The following/attached material contains confidential and proprietary         //  
+// information of SMIC. This material is based upon information which SMIC         //  
+// considers reliable, but SMIC neither represents nor warrants that such          //
+// information is accurate or complete, and it must not be relied upon as such.    //
+// This information was prepared for informational purposes and is for the use     //
+// by SMIC's customer only. SMIC reserves the right to make changes in the         //  
+// information at any time without notice.                                         //  
+//   No part of this information may be reproduced, transmitted, transcribed,      //  
+// stored in a retrieval system, or translated into any human or computer          // 
+// language, in any form or by any means, electronic, mechanical, magnetic,        //  
+// optical, chemical, manual, or otherwise, without the prior written consent of   //
+// SMIC. Any unauthorized use or disclosure of this material is strictly           //  
+// prohibited and may be unlawful. By accepting this material, the receiving       //  
+// party shall be deemed to have acknowledged, accepted, and agreed to be bound    //
+// by the foregoing limitations and restrictions. Thank you.                       //  
+//                                                                                 //
+
+model RAM1024(QA, AA, CLKA, CENA, AB, DB, CLKB, CENB)
+(
+   bist_definition (
+      address        AA (array = 9:0;);
+      data_out       QA (array = 23:0;);
+      read_enable    CENA low;
+      clock          CLKA high;
+      address        AB (array = 9:0;);
+      data_in        DB (array = 23:0;);
+      write_enable   CENB low;
+      clock          CLKB high;
+      
+      
+
+      tech        = "SRAM (0.18um)";
+      vendor      = SMIC;
+      min_address = 0;
+      max_address = 1023;
+      message     = "Synchronous 2-Port 1024x24 SRAM";
+
+      top_column  = 4;
+      addr_inc    = 4;
+      top_word    = 1;
+
+     read_write_port (
+         read_cycle (
+            change AA;
+            assert CENA;
+            wait;
+            wait;
+            expect QA move;
+            wait;
+         )
+         write_cycle (
+            change AB;
+            change DB;
+            assert CENB;
+             wait;
+             wait;
+         )
+      )
+
+   )
+)

@@ -1,0 +1,447 @@
+2.  Synopsys Commands                                        Command Reference
+                               report_constraint
+
+NAME
+       report_constraint
+              Displays constraint-related information about a design.
+
+SYNTAX
+       status report_constraint
+               [-all_violators]
+               [-verbose]
+               [-significant_digits digits]
+               [-max_area]
+               [-max_delay]
+               [-critical_range]
+               [-min_delay]
+               [-max_capacitance]
+               [-min_capacitance]
+               [-max_transition]
+               [-max_fanout]
+               [-cell_degradation]
+               [-max_toggle_rate]
+               [-min_porosity]
+               [-max_dynamic_power]
+               [-max_leakage_power]
+               [-max_total_power]
+               [-max_net_length]
+               [-connection_class]
+               [-multiport_net]
+               [-nosplit]
+               [-min_pulse_width]
+               [-min_period]
+               [-scenarios scenario_list]
+               [-ignore_infeasible_paths]
+
+   Data Types
+       digits            integer
+       scenario_list     list
+
+ARGUMENTS
+       -all_violators
+              Displays  a  summary  of all of the optimization and design rule
+              constraints with violations in the current design.  The -verbose
+              option  provides  detailed  information  about constraint viola-
+              tions.  Multiple violations for a given constraint are listed in
+              order from largest to smallest violation.
+
+       -verbose
+              Displays more detail about constraint calculations.
+
+       -significant_digits digits
+              Specifies the number of digits to the right of the decimal point
+              that are to be reported.  The digits value must be between 0 and
+              13.   The  default is 2.  This option overrides the value set by
+              the report_default_significant_digits variable.
+
+       -max_area
+              Displays only the max_area constraint information.  The  default
+              behavior (without this option and similar options) is to display
+              all optimization and design rule constraints.
+
+       -max_delay
+              Displays only the max_delay and setup information.
+
+       -critical_range
+              Displays  only  the  critical_range  information.   The   criti-
+              cal_range  is  a  design  rule that directs the tool to optimize
+              near-critical paths along with the most critical path.
+
+       -min_delay
+              Displays only the min_delay and hold information.
+
+       -max_capacitance
+              Displays only the max_capacitance constraint  information.   The
+              max_capacitance  constraint  is  a  design  rule that limits the
+              total capacitance on a net.
+
+       -min_capacitance
+              Displays only the min_capacitance constraint  information.   The
+              min_capacitance constraint is a design rule that ensures a mini-
+              mum total capacitance on a net.
+
+       -max_transition
+              Displays only the max_transition  constraint  information.   The
+              max_transition constraint is a design rule that limits the tran-
+              sition time on a net.  If  the  library  uses  the  cmos2  delay
+              model, this option shows the max_edge_rate information.
+
+       -max_fanout
+              Displays  only  the max_fanout constraint information.  The con-
+              straint is a design rule that limits the fanout_load on a net.
+
+       -cell_degradation
+              Displays only the cell_degradation constraint information.   The
+              cell_degradation  constraint  is  a  design rule that limits the
+              total capacitance on a net, with  the  limit  depending  on  the
+              transition times at the inputs of the cell.
+
+       -max_toggle_rate
+              Displays only the max_toggle_rate constraint information.
+
+       -min_porosity
+              Displays  only  the  min_porosity  constraint  information.  The
+              min_porosity  constraint  is  an  optimization  constraint   for
+              routability.
+
+       -max_dynamic_power
+              Displays only the max_dynamic_power constraint information.  The
+              default behavior (without this option and similar  power-related
+              options)  is  to  display all types of power constraint informa-
+              tion.  Queries for power constraint information are  valid  only
+              if a power-related license is available.
+
+       -max_leakage_power
+              Displays only the max_leakage_power constraint information.
+
+       -max_total_power
+              Displays only the max_total_power constraint information.
+
+       -max_net_length
+              Displays   only   max_net_length  constraint  information.   The
+              max_net_length constraint is a design rule that limits the route
+              length  of a net. For more information, see the man page for the
+              set_max_net_length command.
+
+       -connection_class
+              Displays only the connection_class constraint information.   The
+              connection_class constraint is displayed only if there is a con-
+              nection_class violation. For more information, see the man  page
+              for the set_connection_class command.
+
+       -multiport_net
+              Displays  only  the  multiport_net constraint information.  This
+              constraint specifies whether multiple output ports can  be  con-
+              nected  to  a  given net. For more information, see the man page
+              for the set_fix_multiple_port_nets command.
+
+       -nosplit
+              Prevents line splitting and facilitates writing applications  to
+              extract  information from the report output.  Most of the design
+              information is listed in fixed-width columns.  If  the  informa-
+              tion for a given field exceeds the width of the column, the next
+              field begins on a new line, starting in the correct column.
+
+       -min_pulse_width
+              Displays only the min_pulse_width constraint  information.   The
+              min_pulse_width constraint is a design rule that limits the min-
+              imum duration of clock pulses in the clock network.
+
+       -min_period
+              Displays only the minimum period  constraint  information.   The
+              min_period  constraint  is  a  design  rule  that sets a minimum
+              period on a clock signal. The min_period check is supported only
+              for ideal clocks.
+
+       -scenarios scenario_list
+              Reports  constraints for the specified scenarios of a multi-sce-
+              nario design.  Each scenario is reported  separately.   Inactive
+              scenarios are not reported.
+
+              If  you  do  not  use this option, the report_constraint command
+              reports constraints on all active scenarios, except when you use
+              the -all_violators or -verbose option.  If you use these options
+              but not the -scenarios  option,  the  report_constraint  command
+              reports constraints only on the current scenario.
+
+       -ignore_infeasible_paths
+              Ignores  all  the  paths flagged as infeasible during the latest
+              compilation.
+
+DESCRIPTION
+       The report_constraint command displays the  following  information  for
+       the constraints on the current design:
+
+        o Whether the constraint was violated or met
+
+        o By how much the constraint value was violated or met
+
+        o The design object that was the worst violator
+
+       The  maximum delay information shows cost by path group.  This includes
+       violations of setup time on registers or ports with  output  delay,  as
+       well  as violations of set_max_delay commands.  The total maximum delay
+       cost is the sum of each group's weighted cost.  For details on creating
+       path groups, refer to the group_path command man page.  To see the cur-
+       rent path groups in the design, use the report_path_group command.
+
+       The minimum delay cost includes violations of hold time on registers or
+       ports  with  output  delay  as well as violations of set_min_delay com-
+       mands.
+
+       In the path delay reports, if a pin drives a high-fanout net,  this  is
+       indicated  in the report by a # symbol between the incremental and path
+       timing values.  Creation and  usage  of  scenarios  is  available  with
+       Design Compiler Graphical.
+
+   Multicorner-Multimode Support
+       By  default,  this  command uses information from all active scenarios.
+       You can select different scenarios by using the -scenarios option.
+
+EXAMPLES
+       The following example shows brief constraint information for  the  cur-
+       rent design:
+
+         prompt> report_constraint
+
+         ****************************************
+         Report : constraint
+         Design : counter
+         Version: 1998.02
+         Date   : Fri Dec 26 15:49:46 1997
+         ****************************************
+
+                                                            Weighted
+             Group (max_delay/setup)      Cost     Weight     Cost
+             -----------------------------------------------------
+             CLK                          0.00      1.00      0.00
+             default                      0.00      1.00      0.00
+             -----------------------------------------------------
+             max_delay/setup                                  0.00
+
+                                       Total Neg  Critical
+             Group (critical_range)      Slack    Endpoints   Cost
+             -----------------------------------------------------
+             CLK                          0.00         0      0.00
+             default                      0.00         0      0.00
+             -----------------------------------------------------
+             critical_range                                   0.00
+
+             Constraint                                       Cost
+             -----------------------------------------------------
+             max_transition                                   0.00 (MET)
+             max_fanout                                       0.00 (MET)
+             max_delay/setup                                  0.00 (MET)
+             sequential_clock_pulse_width                     0.00 (MET)
+             critical_range                                   0.00 (MET)
+             min_delay/hold                                   0.40 (VIOLATED)
+             max_leakage_power                                6.00 (VIOLATED)
+             max_dynamic_power                               14.03 (VIOLATED)
+             max_area                                        48.00 (VIOLATED)
+
+       The  following example displays detailed constraint information for the
+       current design:
+
+         prompt> report_constraint -verbose
+
+         ****************************************
+         Report : constraint
+                 -verbose
+         Design : counter
+         Version: v3.1a
+         Date   : Tue 1992
+         ****************************************
+
+           Startpoint: ffb (rising edge-triggered flip-flop clocked by CLK)
+           Endpoint: ffd (rising edge-triggered flip-flop clocked by CLK)
+           Path Group: CLK
+           Path Type: max
+
+           Point                                    Incr       Path
+           -----------------------------------------------------------
+           clock CLK (rise edge)                    0.00       0.00
+           startpoint clock skew (ideal)            0.00       0.00
+           startpoint clock uncertainty             0.00       0.00
+           ffb/CP (FD3)                             0.00       0.00 r
+           ffb/QN (FD3)                             2.42       2.42 r
+           w/Z (ND4)                                0.59       3.01 f
+           q/Z (EO)                                 1.13       4.14 f
+           j/Z (AO2)                                1.08       5.22 r
+           ffd/D (FDS2)                             0.00       5.22 r
+           data arrival time                                   5.22
+
+           clock CLK (rise edge)                   10.00      10.00
+           endpoint clock skew (ideal)              0.00      10.00
+           endpoint clock uncertainty               0.00      10.00
+           ffd/CP (FDS2)                            0.00      10.00 r
+           library setup time                      -0.90       9.10
+           data required time                                  9.10
+           -----------------------------------------------------------
+           data required time                                  9.10
+           data arrival time                                  -5.22
+           -----------------------------------------------------------
+           slack (MET)                                         3.88
+
+             Design: counter
+
+             max_area              30.00
+           - Current Area          78.00
+           ------------------------------
+             Slack                -48.00  (VIOLATED)
+
+             Design: counter
+
+             max_leakage_power         70.00
+           - Current Leakage Power     76.00
+           ----------------------------------
+             Slack                     -6.00  (VIOLATED)
+
+             Design: counter
+
+             max_dynamic_power        500.00
+           - Current Dynamic Power    514.03
+           ----------------------------------
+             Slack                    -14.03  (VIOLATED)
+
+       The following example displays detailed information on only those  con-
+       straints that have violations:
+
+         prompt> report_constraint -all_violators -verbose
+
+         ****************************************
+         Report : constraint
+                 -all_violators
+                 -verbose
+         Design : led
+         Version: v3.2a
+         Date   : Tue Jan  3 13:00:45 1995
+         ****************************************
+
+           Startpoint: b (input port)
+           Endpoint: z5 (output port)
+           Path Group: default
+           Path Type: max
+
+           Point                                    Incr       Path
+           -----------------------------------------------------------
+           input external delay                     0.00       0.00 r
+           b (in)                                   0.00       0.00 r
+           U5/Z (IV)                                1.32       1.32 f
+           U3/Z (NR2)                               3.35       4.67 r
+           U18/Z (AO6)                              0.73       5.40 f
+           U22/Z (AO4)                              1.42       6.82 r
+           z5 (out)                                 0.00       6.82 r
+           data arrival time                                   6.82
+
+           max_delay                                6.50       6.50
+           output external delay                    0.00       6.50
+           data required time                                  6.50
+           -----------------------------------------------------------
+           data required time                                  6.50
+           data arrival time                                  -6.82
+           -----------------------------------------------------------
+           slack (VIOLATED)                                   -0.32
+
+           Startpoint: c (input port)
+           Endpoint: z3 (output port)
+           Path Group: default
+           Path Type: max
+
+           Point                                    Incr       Path
+           -----------------------------------------------------------
+           input external delay                     0.00       0.00 r
+           c (in)                                   0.00       0.00 r
+           U6/Z (IV)                                1.34       1.34 f
+           U2/Z (NR2)                               3.35       4.69 r
+           U15/Z (AO7)                              0.87       5.56 f
+           U24/Z (AO3)                              1.02       6.57 r
+           z3 (out)                                 0.00       6.57 r
+           data arrival time                                   6.57
+
+           max_delay                                6.50       6.50
+           output external delay                    0.00       6.50
+           data required time                                  6.50
+           -----------------------------------------------------------
+           data required time                                  6.50
+           data arrival time                                  -6.57
+           -----------------------------------------------------------
+           slack (VIOLATED)                                   -0.07
+
+             Net: a
+
+             max_transition         1.00
+           - Transition Time        1.26
+           ------------------------------
+             Slack                 -0.26  (VIOLATED)
+
+             Net: a
+
+             max_fanout             5.00
+           - Fanout                 7.00
+           ------------------------------
+             Slack                 -2.00  (VIOLATED)
+
+             Design: led
+
+             max_area              30.00
+           - Current Area          36.00
+           ------------------------------
+             Slack                 -6.00  (VIOLATED)
+
+             Design: led
+
+             max_dynamic_power       1000.00
+           - Current Dynamic Power   1254.81
+           ----------------------------------
+             Slack                   -254.81  (VIOLATED)
+
+       The   following   example   displays   the  max_area,  max_delay/setup,
+       min_delay/hold, and max_leakage_power constraint information:
+
+         prompt> report_constraint -max_area -max_delay -min_delay \
+            -max_leakage_power
+
+         ****************************************
+         Report : constraint
+                  -max_area
+                  -max_delay
+                  -min_delay
+                  -max_leakage_power
+         Design : led
+         Version: v3.2a
+         Date   : Tue Jan  3 13:00:56 1995
+         ****************************************
+
+                                                            Weighted
+             Group (max_delay/setup)      Cost     Weight     Cost
+             -----------------------------------------------------
+             default                      0.32      1.00      0.32
+             -----------------------------------------------------
+             max_delay/setup                                  0.32
+
+             Constraint                                       Cost
+             -----------------------------------------------------
+             max_delay/setup                                  0.32 (VIOLATED)
+             max_area                                         6.00 (VIOLATED)
+
+         --------------------------------------------------------------------
+
+SEE ALSO
+       create_clock(2)
+       group_path(2)
+       report_clock(2)
+       report_design(2)
+       report_path_group(2)
+       report_timing(2)
+       report_timing_requirements(2)
+       report_min_pulse_width(2)
+       set_critical_range(2)
+       set_fix_multiple_port_nets(2)
+       set_max_area(2)
+       set_max_delay(2)
+       set_max_dynamic_power(2)
+       set_max_leakage_power(2)
+       set_max_net_length(2)
+
+                          Version J-2014.09-SP3
+            Copyright (c) 2015 Synopsys, Inc. All rights reserved.

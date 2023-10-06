@@ -1,0 +1,181 @@
+######################
+set_design_top sy13
+set_scope .
+
+################################
+#######create power domain
+#################################
+# ae210_chip is power_domian 1
+# sys_top is power_domain 2
+#
+
+create_power_domain PD_TOP -include_scope
+create_power_domain PD_sys    -elements {u_mcu/u_sys_top}
+create_power_domain PD_ae210  -elements {ae210_chip/ae210_core}
+
+####################
+###create_power_supply port
+##################
+
+create_supply_port PORT_VCC -domain PD_TOP -direction in
+create_supply_port PORT_VSS -domain PD_TOP -direction in
+
+####################
+###create_power_supply net
+##################
+
+create_supply_net  NET_VCC  -domain PD_TOP
+create_supply_net  NET_VSS  -domain PD_TOP
+
+create_supply_net NET_VCC_sys -domain PD_sys
+create_supply_net NET_VSS     -domain PD_sys -reuse
+create_supply_net NET_VCC     -domain PD_sys -reuse
+
+
+create_supply_net NET_VCC_ae210 -domain PD_ae210
+create_supply_net NET_VSS       -domain PD_ae210 -reuse
+create_supply_net NET_VCC       -domain PD_ae210 -reuse
+
+#####################
+#connect power supplu net with power supply port
+#####################
+connect_supply_net NET_VCC -ports {PORT_VCC}
+connect_supply_net NET_VSS -ports {PORT_VSS}
+
+#####################
+#set domain supply net
+#####################
+
+set_domain_supply_net PD_TOP   -primary_power_net {NET_VCC}        -primary_ground_net {NET_VSS}
+set_domain_supply_net PD_sys   -primary_power_net {NET_VCC_sys}    -primary_ground_net {NET_VSS}
+set_domain_supply_net PD_ae210 -primary_power_net {NET_VCC_ae210}  -primary_ground_net {NET_VSS}
+
+##########################
+#create power switch
+##########################
+create_power_switch sw_ae210 -domain PD_ae210 \
+                             -input_supply_port  {in_port   NET_VCC } \
+                             -output_supply_port {out_port  NET_VCC_ae210  } \
+                             -control_port       {ctrl_port  u_mcu/u_aoss_wrap/N10PwrReq } \
+                             -ack_port           {ack_port   u_mcu/u_aoss_wrap/N10PwrAck {ctrl_port}} \
+                             -on_state           {ON  in_port {ctrl_port}} \
+                             -off_state          {OFF {!ctrl_port}}
+
+
+create_power_switch sw_sys -domain PD_sys  \
+                           -input_supply_port  {in_port  NET_VCC } \
+                           -output_supply_port {out_port NET_VCC_sys  } \
+                           -control_port       {ctrl_port  u_mcu/u_aoss_wrap/sp_pwroff_req } \
+                           -ack_port           {ack_port   u_mcu/u_aoss_wrap/sp_pwroff_ack {ctrl_port}} \
+                           -on_state           {ON  in_port {ctrl_port}} \
+                           -off_state          {OFF {!ctrl_port}}
+
+
+############################
+#map power switch
+##############
+
+#map_power_switch sw_sys    -domain PD_sys    -lib_cells {PEH_PGATDRV_OW_12}
+#map_power_switch sw_ae210  -domain PD_ae210  -lib_cells {PEH_PGATDRV_OW_12}
+###############################
+#creat_isolation_cell
+#######################
+################################
+
+set_isolation PD_sys_clamp_low -domain PD_sys \
+                                -clamp_value 0 \
+                                -applies_to outputs \
+                                -elements { \
+                                u_mcu/u_sys_top/rst_pmu \
+                                u_mcu/u_sys_top/HSELahb2n10 \
+                                u_mcu/u_sys_top/HADDRahb2pmu_async \
+                                u_mcu/u_sys_top/HTRANSahb2pmu_async \
+                                u_mcu/u_sys_top/HWRITEahb2pmu_async \
+                                u_mcu/u_sys_top/HSIZEahb2pmu_async \
+                                u_mcu/u_sys_top/HBURSTahb2pmu_async \
+                                u_mcu/u_sys_top/HPROTahb2pmu_async \
+                                u_mcu/u_sys_top/HMASTERahb2pmu_async \
+                                u_mcu/u_sys_top/HWDATAahb2pmu_async \
+                                u_mcu/u_sys_top/HMASTERahb2cm0_async \
+                                u_mcu/u_sys_top/test_en \
+                                u_mcu/u_sys_top/scan_en \
+                                u_mcu/u_sys_top/scan_mode \
+                                u_mcu/u_sys_top/ana_mode \
+                               } \
+                                -isolation_power_net NET_VCC \
+                                -isolation_ground_net NET_VSS
+
+
+set_isolation_control PD_sys_clamp_low -domain PD_sys \
+                                       -isolation_signal  {u_mcu/u_aoss_wrap/u_pmu/pmu_ctrl_iso_en} \
+                                       -isolation_sense   {low} \
+                                       -location {parent}
+
+map_isolation_cell PD_sys_clamp_low  -domain PD_sys -lib_cells {PEH_ISOS1CL0_W_8}
+
+################################
+
+set_isolation PD_ae210_clamp_low -domain PD_ae210 \
+                                -isolation_power_net NET_VCC \
+                                -isolation_ground_net NET_VSS \
+                                -clamp_value 0 \
+                                -applies_to outputs \
+                                -elements { \
+                                ae210_chip/ae210_core/HADDRahb2cm0_async \
+                                ae210_chip/ae210_core/HTRANSahb2cm0_async \
+                                ae210_chip/ae210_core/HWRITEahb2cm0_async \
+                                ae210_chip/ae210_core/HSIZEahb2cm0_async \
+                                ae210_chip/ae210_core/HBURSTahb2cm0_async \
+                                ae210_chip/ae210_core/HMASTERahb2cm0_async \
+                                ae210_chip/ae210_core/HWDATAahb2cm0_async \
+                                ae210_chip/ae210_core/HRDATAahb2cm0_async \
+                                ae210_chip/ae210_core/HRESPahb2cm0_async \
+				ae210_chip/ae210_core/HREADYOUTahb2cm0_async \
+                                ae210_chip/ae210_core/gpioa_padout \
+                                ae210_chip/ae210_core/gpioa_padoen \
+                                ae210_chip/ae210_core/gpioa_pull_en \
+                                ae210_chip/ae210_core/gpiob_padout \
+                                ae210_chip/ae210_core/gpiob_padoen \
+                                ae210_chip/ae210_core/gpiob_pull_en \
+                                ae210_chip/ae210_core/gpioc_padout \
+                                ae210_chip/ae210_core/gpioc_padoen \
+                                ae210_chip/ae210_core/gpioc_pull_en \
+                                ae210_chip/ae210_core/gpioc_padout \
+                                ae210_chip/ae210_core/gpiod_padoen \
+                                ae210_chip/ae210_core/gpiod_pull_en \
+                                ae210_chip/ae210_core/int_locsc0 \
+                                ae210_chip/ae210_core/int_timer7 \
+                                ae210_chip/ae210_core/int_timer6 \
+                                ae210_chip/ae210_core/int_timer5 \
+                                ae210_chip/ae210_core/int_timer4 \
+                                ae210_chip/ae210_core/int_pwm \
+                                ae210_chip/ae210_core/int_i2c1 \
+                                ae210_chip/ae210_core/int_spi1 \
+                                ae210_chip/ae210_core/int_uart2 \
+                                ae210_chip/ae210_core/int_gpio \
+                                ae210_chip/ae210_core/int_lcd \
+                                }
+
+#set_isolation PD_ae210_clamp_high -domain PD_ae210 \ 
+#                                -isolation_power_net NET_VCC \
+#                                -isolation_ground_net NET_VSS \
+#                                -clamp_value 1 \
+#                                -applies_to outputs
+#                                       -element {}
+
+set_isolation_control PD_ae210_clamp_low -domain PD_ae210 \
+                                       -isolation_signal  {u_mcu/u_aoss_wrap/N10IsoEn} \
+                                       -isolation_sense   {low} \
+                                       -location {parent}
+
+#set_isolation_control PD_ae210_clamp_high -domain PD_ae210 \
+#                                       -isolation_signal  {u_mcu/u_sys_top/SppIsoEn} \
+#                                       -isolation_sense   {low} \
+#                                       -location {parent}
+
+map_isolation_cell PD_ae210_clamp_low  -domain PD_ae210 -lib_cells {PEH_ISOS1CL0_W_8}
+#map_isolation_cell PD_ae210_clamp_high  -domain PD_ae210 -lib_cells {PEH_ISOS0CL1_W_8}
+
+################################
+#set_design_attributes -attribute SNPS_reinit TRUE
+################################

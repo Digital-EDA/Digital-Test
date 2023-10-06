@@ -1,0 +1,804 @@
+/*
+     Copyright (c) 2022 SMIC             
+     Filename:      RAM256_ss_1.62_-40.lib
+     IP code:       S018RF2P
+     Version:       0.2.b
+     CreateDate:    Oct 31, 2022        
+                    
+    Synopsys Technology Library for 2-PORT Register File
+    SMIC 0.18um G Logic Process
+
+    Configuration: -instname RAM256 -rows 64 -bits 24 -mux 4 
+    Redundancy: Off
+    Bit-Write: Off
+*/
+
+/* DISCLAIMER                                                                      */
+/*                                                                                 */  
+/*   SMIC hereby provides the quality information to you but makes no claims,      */
+/* promises or guarantees about the accuracy, completeness, or adequacy of the     */
+/* information herein. The information contained herein is provided on an "AS IS"  */
+/* basis without any warranty, and SMIC assumes no obligation to provide support   */
+/* of any kind or otherwise maintain the information.                              */  
+/*   SMIC disclaims any representation that the information does not infringe any  */
+/* intellectual property rights or proprietary rights of any third parties. SMIC   */
+/* makes no other warranty, whether express, implied or statutory as to any        */
+/* matter whatsoever, including but not limited to the accuracy or sufficiency of  */
+/* any information or the merchantability and fitness for a particular purpose.    */
+/* Neither SMIC nor any of its representatives shall be liable for any cause of    */
+/* action incurred to connect to this service.                                     */  
+/*                                                                                 */
+/* STATEMENT OF USE AND CONFIDENTIALITY                                            */  
+/*                                                                                 */  
+/*   The following/attached material contains confidential and proprietary         */  
+/* information of SMIC. This material is based upon information which SMIC         */  
+/* considers reliable, but SMIC neither represents nor warrants that such          */
+/* information is accurate or complete, and it must not be relied upon as such.    */
+/* This information was prepared for informational purposes and is for the use     */
+/* by SMIC's customer only. SMIC reserves the right to make changes in the         */  
+/* information at any time without notice.                                         */  
+/*   No part of this information may be reproduced, transmitted, transcribed,      */  
+/* stored in a retrieval system, or translated into any human or computer          */ 
+/* language, in any form or by any means, electronic, mechanical, magnetic,        */  
+/* optical, chemical, manual, or otherwise, without the prior written consent of   */
+/* SMIC. Any unauthorized use or disclosure of this material is strictly           */  
+/* prohibited and may be unlawful. By accepting this material, the receiving       */  
+/* party shall be deemed to have acknowledged, accepted, and agreed to be bound    */
+/* by the foregoing limitations and restrictions. Thank you.                       */  
+/*                                                                                 */  
+library(RAM256_ss_1.62_-40) {
+	delay_model		: table_lookup;
+	time_unit		: "1ns";
+	voltage_unit		: "1V";
+	current_unit		: "1mA";
+	leakage_power_unit	: "1mW";
+	nom_process		: 1;
+	nom_temperature         : -40;
+	nom_voltage		: 1.62;
+	capacitive_load_unit	 (1,pf);
+
+	pulling_resistance_unit	: "1kohm";
+
+	/* additional header data */
+	default_cell_leakage_power      : 0;
+	default_fanout_load		: 1;
+	default_inout_pin_cap		: 0.005;
+	default_input_pin_cap		: 0.005;
+	default_output_pin_cap		: 0.0;
+	default_max_transition		: 3.000;
+
+      /* default attributes */
+      default_leakage_power_density : 0.0;
+      slew_derate_from_library      : 1.000;
+      slew_lower_threshold_pct_fall : 10.000;
+      slew_upper_threshold_pct_fall : 90.000;
+      slew_lower_threshold_pct_rise : 10.000;
+      slew_upper_threshold_pct_rise : 90.000;
+      input_threshold_pct_fall      : 50.000;
+      input_threshold_pct_rise      : 50.000;
+      output_threshold_pct_fall     : 50.000;
+      output_threshold_pct_rise     : 50.000;
+
+ 	/* k-factors */
+ 	k_process_cell_fall             : 1;
+ 	k_process_cell_leakage_power    : 0;
+ 	k_process_cell_rise             : 1;
+ 	k_process_fall_transition       : 1;
+ 	k_process_hold_fall             : 1;
+ 	k_process_hold_rise             : 1;
+ 	k_process_internal_power        : 0;
+ 	k_process_min_pulse_width_high  : 1;
+ 	k_process_min_pulse_width_low   : 1;
+ 	k_process_pin_cap               : 0;
+ 	k_process_recovery_fall         : 1;
+ 	k_process_recovery_rise         : 1;
+ 	k_process_rise_transition       : 1;
+ 	k_process_setup_fall            : 1;
+ 	k_process_setup_rise            : 1;
+ 	k_process_wire_cap              : 0;
+ 	k_process_wire_res              : 0;
+	k_temp_cell_fall                : 0.000;
+	k_temp_cell_rise		: 0.000;
+	k_temp_hold_fall                : 0.000;
+	k_temp_hold_rise                : 0.000;
+	k_temp_min_pulse_width_high     : 0.000;
+	k_temp_min_pulse_width_low      : 0.000;
+	k_temp_min_period               : 0.000;
+	k_temp_rise_propagation         : 0.000;
+	k_temp_fall_propagation         : 0.000;
+	k_temp_rise_transition          : 0.0;
+	k_temp_fall_transition          : 0.0;
+	k_temp_recovery_fall            : 0.000;
+	k_temp_recovery_rise            : 0.000;
+	k_temp_setup_fall               : 0.000;
+	k_temp_setup_rise               : 0.000;
+	k_volt_cell_fall                : 0.000;
+	k_volt_cell_rise                : 0.000;
+	k_volt_hold_fall                : 0.000;
+	k_volt_hold_rise                : 0.000;
+	k_volt_min_pulse_width_high     : 0.000;
+	k_volt_min_pulse_width_low      : 0.000;
+	k_volt_min_period               : 0.000;
+	k_volt_rise_propagation         : 0.000;
+	k_volt_fall_propagation         : 0.000;
+	k_volt_rise_transition	        : 0.0;
+	k_volt_fall_transition	        : 0.0;
+	k_volt_recovery_fall            : 0.000;
+	k_volt_recovery_rise            : 0.000;
+	k_volt_setup_fall               : 0.000;
+	k_volt_setup_rise               : 0.000;
+
+
+        operating_conditions(ss_1.62_-40) {
+		process	         : 1;
+		temperature	 : -40;
+		voltage	         : 1.62;
+		tree_type	 : balanced_tree;
+	}
+        default_operating_conditions : ss_1.62_-40;
+	  wire_load("sample") {
+		resistance	 : 1.6e-05;
+		capacitance	 : 0.0002;
+		area	 : 1.7;
+  		slope	 : 500;
+		fanout_length	 (1,500);
+	}
+        lu_table_template(RAM256_bist_mux_delay_template) {
+           variable_1 : input_net_transition;
+           variable_2 : total_output_net_capacitance;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+        lu_table_template(RAM256_mux_mem_out_delay_template) {
+           variable_1 : input_net_transition;
+           variable_2 : total_output_net_capacitance;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+        lu_table_template(RAM256_mem_out_delay_template) {
+           variable_1 : input_net_transition;
+           variable_2 : total_output_net_capacitance;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+	  lu_table_template(RAM256_bist_mux_slew_template) {
+           variable_1 : total_output_net_capacitance;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+	  lu_table_template(RAM256_mem_out_slew_template) {
+           variable_1 : total_output_net_capacitance;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+	  lu_table_template(RAM256_clk_setup_constraint_template) {
+           variable_1 : related_pin_transition;
+           variable_2 : constrained_pin_transition;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+	  lu_table_template(RAM256_constraint_template) {
+           variable_1 : related_pin_transition;
+           variable_2 : constrained_pin_transition;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+        
+     power_lut_template(RAM256_energy_template_clkslew_load) {
+           variable_1 : input_transition_time;
+           variable_2 : total_output_net_capacitance;
+               index_1 ("1000, 1001");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+        
+     power_lut_template(RAM256_energy_template_sigslew_load) {
+           variable_1 : input_transition_time;
+           variable_2 : total_output_net_capacitance;
+               index_1 ("1000, 1001");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+      power_lut_template(RAM256_energy_template_load) {
+           variable_1 : total_output_net_capacitance;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+      power_lut_template(RAM256_energy_template_clkslew) {
+           variable_1 : input_transition_time;
+               index_1 ("1000, 1001");
+        }
+      power_lut_template(RAM256_energy_template_sigslew) {
+           variable_1 : input_transition_time;
+               index_1 ("1000, 1001");
+        }
+	library_features(report_delay_calculation);
+	type (RAM256_DATA) {
+		base_type : array ;
+		data_type : bit ;
+		bit_width : 24;
+		bit_from : 23;
+		bit_to : 0 ;
+		downto : true ;
+	}
+
+	type (RAM256_ADDRESS) {
+		base_type : array ;
+		data_type : bit ;
+		bit_width : 8;
+		bit_from : 7;
+		bit_to : 0 ;
+		downto : true ;
+	}
+        type (RAM256_S) {
+		base_type : array ;
+		data_type : bit ;
+		bit_width : 3;
+		bit_from : 2;
+		bit_to : 0 ;
+		downto : true ;
+	}
+
+
+cell(RAM256) {
+	area		 : 107307.100;
+	dont_use	 : TRUE;
+	dont_touch	 : TRUE;
+      interface_timing : TRUE;
+	memory() {
+		type : ram;
+		address_width : 8;
+		word_width : 24;
+	}
+
+        bus(QA)   {
+            bus_type : RAM256_DATA;
+		direction : output;
+		max_capacitance : 1.720;
+                memory_read() {
+			address : AA;
+		}
+                timing() {
+                        related_pin :   "CLKA" ;
+                        timing_type : rising_edge ;
+                        timing_sense : non_unate;
+                        
+              cell_rise(RAM256_mem_out_delay_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.000, 0.060, 0.120, 0.240, 0.560, 1.120, 1.720");
+                        values(\
+			"2.168, 2.247, 2.318, 2.465, 2.851, 3.523, 4.246",\
+			"2.185, 2.264, 2.339, 2.483, 2.868, 3.539, 4.263",\
+			"2.196, 2.275, 2.351, 2.492, 2.878, 3.551, 4.272",\
+			"2.203, 2.286, 2.358, 2.504, 2.889, 3.560, 4.283",\
+			"2.192, 2.272, 2.348, 2.489, 2.875, 3.551, 4.272",\
+			"2.130, 2.210, 2.282, 2.426, 2.813, 3.487, 4.205",\
+			"2.034, 2.114, 2.187, 2.334, 2.718, 3.389, 4.112"\
+                        );
+                        }
+                        rise_transition(RAM256_mem_out_slew_template) {
+                        index_1("0.000, 0.060, 0.120, 0.240, 0.560, 1.120, 1.720");
+			values("0.042, 0.180, 0.325, 0.620, 1.404, 2.782, 4.258");
+                        }
+                        
+               cell_fall(RAM256_mem_out_delay_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.000, 0.060, 0.120, 0.240, 0.560, 1.120, 1.720");
+                        values(\
+			"2.119, 2.195, 2.247, 2.353, 2.636, 3.125, 3.652",\
+			"2.136, 2.212, 2.268, 2.372, 2.653, 3.141, 3.669",\
+			"2.147, 2.223, 2.280, 2.381, 2.663, 3.153, 3.678",\
+			"2.154, 2.234, 2.287, 2.392, 2.674, 3.162, 3.688",\
+			"2.144, 2.220, 2.277, 2.378, 2.660, 3.153, 3.677",\
+			"2.081, 2.158, 2.211, 2.314, 2.598, 3.089, 3.611",\
+			"1.985, 2.062, 2.116, 2.222, 2.503, 2.991, 3.517"\
+                        );
+                        }
+                        
+                        fall_transition(RAM256_mem_out_slew_template) {
+                        index_1("0.000, 0.060, 0.120, 0.240, 0.560, 1.120, 1.720");
+			values("0.045, 0.132, 0.215, 0.393, 0.886, 1.761, 2.675");
+                        }
+            }
+        }
+        pin(CLKA)   {
+		direction : input;
+		capacitance : 0.084;
+                clock : true;
+                max_transition : 3.000;
+                timing() {
+                        related_pin     : "CLKB" ;
+			when : "!CENA & !CENB";
+                        sdf_cond : "clkconfB_flag";
+                        timing_type     : setup_rising ;
+                        rise_constraint(RAM256_clk_setup_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                         "2.862, 2.862, 2.862, 2.862, 2.862, 2.862, 2.862",\
+                         "2.862, 2.862, 2.862, 2.862, 2.862, 2.862, 2.862",\
+                         "2.862, 2.862, 2.862, 2.862, 2.862, 2.862, 2.862",\
+                         "2.862, 2.862, 2.862, 2.862, 2.862, 2.862, 2.862",\
+                         "2.862, 2.862, 2.862, 2.862, 2.862, 2.862, 2.862",\
+                         "2.862, 2.862, 2.862, 2.862, 2.862, 2.862, 2.862",\
+                         "2.862, 2.862, 2.862, 2.862, 2.862, 2.862, 2.862"\
+                        );
+                        }
+                 }
+                min_pulse_width_high  : 0.060 ;
+                min_pulse_width_low   : 0.210 ;
+                min_period            : 2.862 ;
+
+                internal_power(){
+                        when : "(!CENA )";
+                        
+                        rise_power(RAM256_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("39.305, 39.305")
+                        }
+                        
+                        fall_power(RAM256_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.000, 0.000")
+                        }
+                }
+                 internal_power(){
+                        when : "(CENA)";
+
+                        rise_power(RAM256_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.021, 0.021")
+                        }
+
+                        fall_power(RAM256_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.000, 0.000")
+                        }
+                        }
+                }
+
+        pin(CENA)   {
+                direction : input;
+                capacitance : 0.009;
+                timing() {
+                        related_pin     : CLKA;
+                        timing_type     : setup_rising ;
+                        
+                        rise_constraint(RAM256_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+			"0.474, 0.494, 0.510, 0.529, 0.552, 0.557, 0.541",\
+			"0.461, 0.480, 0.496, 0.516, 0.537, 0.538, 0.533",\
+			"0.452, 0.475, 0.487, 0.511, 0.530, 0.536, 0.524",\
+			"0.443, 0.462, 0.476, 0.493, 0.520, 0.531, 0.518",\
+			"0.456, 0.476, 0.488, 0.514, 0.532, 0.540, 0.529",\
+			"0.533, 0.552, 0.562, 0.585, 0.611, 0.608, 0.595",\
+			"0.637, 0.651, 0.661, 0.679, 0.698, 0.701, 0.686"\
+                        );
+                        }
+                        
+                        fall_constraint(RAM256_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+			"0.537, 0.555, 0.585, 0.655, 0.801, 0.997, 1.174",\
+			"0.526, 0.547, 0.577, 0.649, 0.793, 0.988, 1.164",\
+			"0.552, 0.564, 0.603, 0.667, 0.808, 1.003, 1.182",\
+			"0.600, 0.609, 0.659, 0.713, 0.858, 1.049, 1.238",\
+			"0.714, 0.739, 0.778, 0.830, 0.986, 1.166, 1.232",\
+			"0.897, 0.908, 0.945, 0.998, 1.161, 1.340, 1.428",\
+			"1.144, 1.055, 1.051, 1.132, 1.215, 1.506, 1.678"\
+                        );
+                        }
+                } 
+                timing() {
+                        related_pin     : CLKA;
+                        timing_type     : hold_rising ;
+                        
+                        rise_constraint(RAM256_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100"\
+                        );
+                        }
+                        
+                        fall_constraint(RAM256_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100"\
+                        );
+                        }
+               }
+        }
+
+
+        bus(AA)   {
+                bus_type : RAM256_ADDRESS;
+                direction : input;
+                capacitance : 0.005;
+                timing() {
+                        related_pin     : CLKA;
+			when : "!CENA";
+                        sdf_cond : "CEA_flag";
+                        timing_type     : setup_rising ;
+                        
+                        rise_constraint(RAM256_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "1.001, 1.024, 1.049, 1.090, 1.156, 1.209, 1.236",\
+			"0.984, 1.005, 1.030, 1.071, 1.139, 1.192, 1.218",\
+			"0.972, 0.993, 1.019, 1.059, 1.127, 1.180, 1.206",\
+			"0.962, 0.983, 1.009, 1.049, 1.116, 1.172, 1.196",\
+			"0.970, 0.990, 1.016, 1.056, 1.122, 1.176, 1.203",\
+			"1.026, 1.048, 1.074, 1.114, 1.180, 1.234, 1.262",\
+			"1.115, 1.136, 1.163, 1.203, 1.269, 1.324, 1.350"\
+			);
+                        }
+                        
+                        fall_constraint(RAM256_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "1.100, 1.122, 1.154, 1.219, 1.401, 1.627, 1.804",\
+			"1.082, 1.104, 1.137, 1.201, 1.383, 1.608, 1.787",\
+			"1.070, 1.093, 1.125, 1.189, 1.371, 1.597, 1.775",\
+			"1.060, 1.083, 1.114, 1.180, 1.361, 1.587, 1.765",\
+			"1.069, 1.089, 1.120, 1.186, 1.369, 1.593, 1.771",\
+			"1.125, 1.147, 1.179, 1.244, 1.427, 1.652, 1.830",\
+			"1.214, 1.236, 1.268, 1.333, 1.515, 1.740, 1.918"\
+			);
+                        }
+                } 
+                timing() {
+                        related_pin     : CLKA;
+			when : "!CENA";
+                        sdf_cond : "CEA_flag";
+                        timing_type     : hold_rising ;
+                        
+                        rise_constraint(RAM256_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "0.629, 0.608, 0.582, 0.542, 0.476, 0.423, 0.400",\
+			"0.648, 0.626, 0.600, 0.560, 0.493, 0.441, 0.417",\
+			"0.659, 0.638, 0.612, 0.573, 0.506, 0.453, 0.429",\
+			"0.670, 0.649, 0.622, 0.582, 0.515, 0.461, 0.439",\
+			"0.663, 0.642, 0.616, 0.576, 0.510, 0.457, 0.432",\
+			"0.606, 0.583, 0.559, 0.517, 0.453, 0.400, 0.375",\
+			"0.516, 0.497, 0.471, 0.430, 0.367, 0.367, 0.367"\
+			);
+                        }
+                        
+                        fall_constraint(RAM256_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "0.383, 0.360, 0.329, 0.264, 0.162, 0.162, 0.162",\
+			"0.401, 0.378, 0.346, 0.282, 0.162, 0.162, 0.162",\
+			"0.413, 0.390, 0.359, 0.294, 0.162, 0.162, 0.162",\
+			"0.423, 0.400, 0.369, 0.304, 0.162, 0.162, 0.162",\
+			"0.417, 0.393, 0.362, 0.298, 0.162, 0.162, 0.162",\
+			"0.359, 0.335, 0.305, 0.239, 0.162, 0.162, 0.162",\
+			"0.270, 0.249, 0.217, 0.162, 0.162, 0.162, 0.162"\
+			);
+                        }
+               }
+                internal_power(){
+                        when : "CENA";
+                        
+                        rise_power(RAM256_energy_template_sigslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.195, 0.195")
+                        }
+                        
+                        fall_power(RAM256_energy_template_sigslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.195, 0.195")
+                        }
+                }
+        }
+        pin(CLKB)   {
+		direction : input;
+		capacitance : 0.084;
+                clock : true;
+                max_transition : 3.000;
+                timing() {
+                        related_pin     : "CLKA" ;
+			when : "!CENA & !CENB";
+                        sdf_cond : "clkconfA_flag";
+                        timing_type     : setup_rising ;
+                        rise_constraint(RAM256_clk_setup_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                         "2.862, 2.862, 2.862, 2.862, 2.862, 2.862, 2.862",\
+                         "2.862, 2.862, 2.862, 2.862, 2.862, 2.862, 2.862",\
+                         "2.862, 2.862, 2.862, 2.862, 2.862, 2.862, 2.862",\
+                         "2.862, 2.862, 2.862, 2.862, 2.862, 2.862, 2.862",\
+                         "2.862, 2.862, 2.862, 2.862, 2.862, 2.862, 2.862",\
+                         "2.862, 2.862, 2.862, 2.862, 2.862, 2.862, 2.862",\
+                         "2.862, 2.862, 2.862, 2.862, 2.862, 2.862, 2.862"\
+                        );
+                        }
+                 }
+                 min_pulse_width_high : 0.060 ;
+                 min_pulse_width_low  : 0.210 ;
+                 min_period           : 2.862 ;
+
+                 internal_power(){
+                        when : "(!CENB) \
+                                 ";
+                        rise_power(RAM256_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("90.231, 90.231")
+                        }
+                        
+                        fall_power(RAM256_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.000, 0.000")
+                        }
+                }
+                internal_power(){
+
+                       when : "(CENB)";
+                        
+                        rise_power(RAM256_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.021, 0.021")
+                        }
+                        
+                        fall_power(RAM256_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.000, 0.000")
+                        }
+                }
+        }
+        pin(CENB)   {
+                direction : input;
+                capacitance : 0.009;
+                timing() {
+                        related_pin     : CLKB;
+                        timing_type     : setup_rising ;
+                        
+                        rise_constraint(RAM256_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+			"0.474, 0.494, 0.510, 0.529, 0.552, 0.557, 0.541",\
+			"0.461, 0.480, 0.496, 0.516, 0.537, 0.538, 0.533",\
+			"0.452, 0.475, 0.487, 0.511, 0.530, 0.536, 0.524",\
+			"0.443, 0.462, 0.476, 0.493, 0.520, 0.531, 0.518",\
+			"0.456, 0.476, 0.488, 0.514, 0.532, 0.540, 0.529",\
+			"0.533, 0.552, 0.562, 0.585, 0.611, 0.608, 0.595",\
+			"0.637, 0.651, 0.661, 0.679, 0.698, 0.701, 0.686"\
+                        );
+                        }
+                        
+                        fall_constraint(RAM256_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+			"0.537, 0.555, 0.585, 0.655, 0.801, 0.997, 1.174",\
+			"0.526, 0.547, 0.577, 0.649, 0.793, 0.988, 1.164",\
+			"0.552, 0.564, 0.603, 0.667, 0.808, 1.003, 1.182",\
+			"0.600, 0.609, 0.659, 0.713, 0.858, 1.049, 1.238",\
+			"0.714, 0.739, 0.778, 0.830, 0.986, 1.166, 1.232",\
+			"0.897, 0.908, 0.945, 0.998, 1.161, 1.340, 1.428",\
+			"1.144, 1.055, 1.051, 1.132, 1.215, 1.506, 1.678"\
+                        );
+                        }
+                } 
+                timing() {
+                        related_pin     : CLKB;
+                        timing_type     : hold_rising ;
+                        
+                        rise_constraint(RAM256_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100"\
+                        );
+                        }
+                        
+                        fall_constraint(RAM256_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100"\
+                        );
+                        }
+               }
+        }
+        bus(AB)   {
+                bus_type : RAM256_ADDRESS;
+                direction : input;
+                capacitance : 0.005;
+               timing() {
+                        related_pin     : CLKB;
+			when : "!CENB";
+                        sdf_cond : "CEB_flag";
+                        timing_type     : setup_rising ;
+                        
+                        rise_constraint(RAM256_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "1.001, 1.024, 1.049, 1.090, 1.156, 1.209, 1.236",\
+			"0.984, 1.005, 1.030, 1.071, 1.139, 1.192, 1.218",\
+			"0.972, 0.993, 1.019, 1.059, 1.127, 1.180, 1.206",\
+			"0.962, 0.983, 1.009, 1.049, 1.116, 1.172, 1.196",\
+			"0.970, 0.990, 1.016, 1.056, 1.122, 1.176, 1.203",\
+			"1.026, 1.048, 1.074, 1.114, 1.180, 1.234, 1.262",\
+			"1.115, 1.136, 1.163, 1.203, 1.269, 1.324, 1.350"\
+			);
+                        }
+                        
+                        fall_constraint(RAM256_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "1.100, 1.122, 1.154, 1.219, 1.401, 1.627, 1.804",\
+			"1.082, 1.104, 1.137, 1.201, 1.383, 1.608, 1.787",\
+			"1.070, 1.093, 1.125, 1.189, 1.371, 1.597, 1.775",\
+			"1.060, 1.083, 1.114, 1.180, 1.361, 1.587, 1.765",\
+			"1.069, 1.089, 1.120, 1.186, 1.369, 1.593, 1.771",\
+			"1.125, 1.147, 1.179, 1.244, 1.427, 1.652, 1.830",\
+			"1.214, 1.236, 1.268, 1.333, 1.515, 1.740, 1.918"\
+			);
+                        }
+                } 
+               timing() {
+                        related_pin     : CLKB;
+			when : "!CENB";
+                        sdf_cond : "CEB_flag";
+                        timing_type     : hold_rising ;
+                        
+                        rise_constraint(RAM256_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "0.629, 0.608, 0.582, 0.542, 0.476, 0.423, 0.400",\
+			"0.648, 0.626, 0.600, 0.560, 0.493, 0.441, 0.417",\
+			"0.659, 0.638, 0.612, 0.573, 0.506, 0.453, 0.429",\
+			"0.670, 0.649, 0.622, 0.582, 0.515, 0.461, 0.439",\
+			"0.663, 0.642, 0.616, 0.576, 0.510, 0.457, 0.432",\
+			"0.606, 0.583, 0.559, 0.517, 0.453, 0.400, 0.375",\
+			"0.516, 0.497, 0.471, 0.430, 0.367, 0.367, 0.367"\
+			);
+                        }
+                        
+                        fall_constraint(RAM256_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "0.383, 0.360, 0.329, 0.264, 0.162, 0.162, 0.162",\
+			"0.401, 0.378, 0.346, 0.282, 0.162, 0.162, 0.162",\
+			"0.413, 0.390, 0.359, 0.294, 0.162, 0.162, 0.162",\
+			"0.423, 0.400, 0.369, 0.304, 0.162, 0.162, 0.162",\
+			"0.417, 0.393, 0.362, 0.298, 0.162, 0.162, 0.162",\
+			"0.359, 0.335, 0.305, 0.239, 0.162, 0.162, 0.162",\
+			"0.270, 0.249, 0.217, 0.162, 0.162, 0.162, 0.162"\
+			);
+                        }
+               }
+               internal_power(){
+	
+                        when : "CENB";
+                        
+                        rise_power(RAM256_energy_template_sigslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.195, 0.195")
+                        }
+                        
+                        fall_power(RAM256_energy_template_sigslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.195, 0.195")
+                        }
+                }
+        }
+        bus(DB)   {
+                bus_type : RAM256_DATA;
+                memory_write() {
+                        address : AB;
+                        clocked_on : "CLKB";
+                }
+                direction : input;
+                capacitance : 0.005;
+                timing() {
+                        related_pin     : CLKB;
+
+			when : "!CENB";
+                        sdf_cond : "CEB_flag";
+                        timing_type     : setup_rising ;
+                        
+                        rise_constraint(RAM256_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "0.806, 0.822, 0.838, 0.858, 0.888, 0.900, 0.897",\
+			"0.789, 0.804, 0.819, 0.841, 0.872, 0.884, 0.881",\
+			"0.777, 0.793, 0.808, 0.828, 0.860, 0.872, 0.869",\
+			"0.767, 0.783, 0.798, 0.818, 0.848, 0.864, 0.858",\
+			"0.776, 0.790, 0.805, 0.825, 0.854, 0.868, 0.864",\
+			"0.832, 0.848, 0.863, 0.882, 0.912, 0.926, 0.923",\
+			"0.920, 0.935, 0.951, 0.970, 1.001, 1.015, 1.011"\
+			);
+                        }
+                        
+                        fall_constraint(RAM256_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "0.542, 0.564, 0.596, 0.658, 0.798, 0.963, 1.101",\
+			"0.525, 0.546, 0.578, 0.640, 0.780, 0.946, 1.083",\
+			"0.511, 0.534, 0.566, 0.628, 0.769, 0.934, 1.071",\
+			"0.502, 0.524, 0.556, 0.618, 0.758, 0.924, 1.061",\
+			"0.511, 0.531, 0.563, 0.625, 0.764, 0.931, 1.068",\
+			"0.566, 0.589, 0.621, 0.683, 0.822, 0.988, 1.127",\
+			"0.655, 0.677, 0.709, 0.771, 0.911, 1.078, 1.214"\
+			);
+                        }
+                } 
+                timing() {
+                        related_pin     : CLKB;
+			when : "!CENB";
+                        sdf_cond : "CEB_flag";
+                        timing_type     : hold_rising ;
+                        
+                        rise_constraint(RAM256_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "0.096, 0.081, 0.065, 0.048, 0.048, 0.048, 0.048",\
+			"0.114, 0.099, 0.083, 0.063, 0.048, 0.048, 0.048",\
+			"0.126, 0.110, 0.095, 0.075, 0.048, 0.048, 0.048",\
+			"0.137, 0.122, 0.105, 0.086, 0.056, 0.048, 0.048",\
+			"0.130, 0.115, 0.100, 0.079, 0.051, 0.048, 0.048",\
+			"0.073, 0.056, 0.048, 0.048, 0.048, 0.048, 0.048",\
+			"0.048, 0.048, 0.048, 0.048, 0.048, 0.048, 0.048"\
+			);
+                        }
+                        
+                        fall_constraint(RAM256_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "0.210, 0.187, 0.155, 0.093, 0.030, 0.030, 0.030",\
+			"0.228, 0.205, 0.173, 0.111, 0.030, 0.030, 0.030",\
+			"0.240, 0.217, 0.185, 0.123, 0.030, 0.030, 0.030",\
+			"0.249, 0.227, 0.195, 0.133, 0.030, 0.030, 0.030",\
+			"0.244, 0.220, 0.188, 0.127, 0.030, 0.030, 0.030",\
+			"0.186, 0.161, 0.131, 0.068, 0.030, 0.030, 0.030",\
+			"0.097, 0.075, 0.043, 0.030, 0.030, 0.030, 0.030"\
+			);
+                        }
+               }
+        }
+
+        cell_leakage_power : 0.000570 ;
+        
+}
+}

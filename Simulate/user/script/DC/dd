@@ -1,0 +1,70 @@
+30,31d29
+< /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac_cm0 \
+< /home/xian001/SY13_DATA/RTL/sy1301/AE210P/ae210p/andes_ip/peripheral_ip/i_eh2h_s3m1 \
+234a233
+> /home/xian001/SY13_DATA/RTL/sy1301/AE210P/ae210p/andes_ip/peripheral_ip/hyperram/AhbToAxi/Axi_undef.v \
+301a301
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/spi_dw/spi_DW_apb_ssi-undef.v \
+346a347
+> /home/xian001/SY13_DATA/RTL/sy1301/AE210P/ae210p/andes_ip/peripheral_ip/i_dmac/src/DW_ahb_dmac-undef.v \
+408a410
+> /home/xian001/SY13_DATA/RTL/sy1301/AE210P/ae210p/andes_ip/peripheral_ip/i_eh2h_s2m1/s2m1_DW_ahb_eh2h-undef.v \
+725a728
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/BusMatrix_2s10m/verilog/rtl_source/BmDefaultSlave.v \
+752a756,789
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_arb_mask.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_arb_req_mi.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_arb_top.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_arbiter_dp.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_bcm01.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_bcm06.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_bcm52.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_bcm54.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_bcm57.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_begen.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_busmux.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_central_tfr_ctl.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_ch_dmux.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_ch_dst_sm.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_ch_src_sm.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_ch_tfr_ctrl.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_ch_to_mi_mux.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_ch_top.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_channelregs.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_commonregs.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_fifo.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_fifo_ctrl.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_fifo_top.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_hs.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_intrif.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_lock_clr.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_master_top.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_mbiu.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_mi_to_ch_mux.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_mst_endian.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_regblockif.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac_sbiu.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_dmac/src/DW_ahb_dmac-undef.v \
+755a793,805
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_h2h_async/src/DW_ahb_h2h_async.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_h2h_async/src/DW_ahb_h2h_bcm02.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_h2h_async/src/DW_ahb_h2h_bcm21.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_h2h_async/src/DW_ahb_h2h_begen.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_h2h_async/src/DW_ahb_h2h_core.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_h2h_async/src/DW_ahb_h2h_dreg.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_h2h_async/src/DW_ahb_h2h_macros.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_h2h_async/src/DW_ahb_h2h_mbiu.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_h2h_async/src/DW_ahb_h2h_mfsm.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_h2h_async/src/DW_ahb_h2h_sbiu.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_h2h_async/src/DW_ahb_h2h_sfsm.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_h2h_async/src/DW_ahb_h2h_sync.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/i_h2h_async/src/DW_ahb_h2h-undef.v \
+921a972,973
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/ssi/DW_apb_ssi-undef.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/timer/cm0ik_t.v \
+922a975,978
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/vpwm/cm0ik_vpwm.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/vpwm/vpwm.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/vpwm/vpwm_fifo.v \
+> /home/xian001/SY13_DATA/RTL/sy1301/CortexM0/integration_kit/logical/peripheral/vpwm/vpwm_par_reg.v \

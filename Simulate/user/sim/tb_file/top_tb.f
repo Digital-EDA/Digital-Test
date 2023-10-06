@@ -1,0 +1,13 @@
+/home/project/ASIC/simulate/user/sim/tb_file/top_tb.v
+/home/project/ASIC/simulate/user/sim/tb_file/top.v
+/home/project/ASIC/simulate/user/sim/tb_file/scc018ug_hd_rvt.v
+/home/project/ASIC/simulate/user/sim/tb_file/SP018D18RP_V0p5.v
+/home/project/ASIC/simulate/user/src/utils/RAM/64FP/RAM64.v
+/home/project/ASIC/simulate/user/src/utils/RAM/128FP/RAM128.v
+/home/project/ASIC/simulate/user/src/utils/RAM/256FP/RAM256.v
+/home/project/ASIC/simulate/user/src/utils/RAM/512FP/RAM512.v
+/home/project/ASIC/simulate/user/src/utils/RAM/1024FP/RAM1024.v
+/home/project/ASIC/simulate/user/src/utils/RAM/2048FP/FRAM512.v
+/home/project/ASIC/simulate/user/src/utils/RAM/2048FP/RAM2048.v
+/home/project/ASIC/simulate/user/sim/utils/receive.v
+/home/project/ASIC/simulate/user/sim/utils/SPI_S2M.v

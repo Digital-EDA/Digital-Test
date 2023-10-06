@@ -1,0 +1,804 @@
+/*
+     Copyright (c) 2023 SMIC             
+     Filename:      FRAM512_ss_1.62_-40.lib
+     IP code:       S018RF2P
+     Version:       0.2.b
+     CreateDate:    May 31, 2023        
+                    
+    Synopsys Technology Library for 2-PORT Register File
+    SMIC 0.18um G Logic Process
+
+    Configuration: -instname FRAM512 -rows 256 -bits 48 -mux 2 
+    Redundancy: Off
+    Bit-Write: Off
+*/
+
+/* DISCLAIMER                                                                      */
+/*                                                                                 */  
+/*   SMIC hereby provides the quality information to you but makes no claims,      */
+/* promises or guarantees about the accuracy, completeness, or adequacy of the     */
+/* information herein. The information contained herein is provided on an "AS IS"  */
+/* basis without any warranty, and SMIC assumes no obligation to provide support   */
+/* of any kind or otherwise maintain the information.                              */  
+/*   SMIC disclaims any representation that the information does not infringe any  */
+/* intellectual property rights or proprietary rights of any third parties. SMIC   */
+/* makes no other warranty, whether express, implied or statutory as to any        */
+/* matter whatsoever, including but not limited to the accuracy or sufficiency of  */
+/* any information or the merchantability and fitness for a particular purpose.    */
+/* Neither SMIC nor any of its representatives shall be liable for any cause of    */
+/* action incurred to connect to this service.                                     */  
+/*                                                                                 */
+/* STATEMENT OF USE AND CONFIDENTIALITY                                            */  
+/*                                                                                 */  
+/*   The following/attached material contains confidential and proprietary         */  
+/* information of SMIC. This material is based upon information which SMIC         */  
+/* considers reliable, but SMIC neither represents nor warrants that such          */
+/* information is accurate or complete, and it must not be relied upon as such.    */
+/* This information was prepared for informational purposes and is for the use     */
+/* by SMIC's customer only. SMIC reserves the right to make changes in the         */  
+/* information at any time without notice.                                         */  
+/*   No part of this information may be reproduced, transmitted, transcribed,      */  
+/* stored in a retrieval system, or translated into any human or computer          */ 
+/* language, in any form or by any means, electronic, mechanical, magnetic,        */  
+/* optical, chemical, manual, or otherwise, without the prior written consent of   */
+/* SMIC. Any unauthorized use or disclosure of this material is strictly           */  
+/* prohibited and may be unlawful. By accepting this material, the receiving       */  
+/* party shall be deemed to have acknowledged, accepted, and agreed to be bound    */
+/* by the foregoing limitations and restrictions. Thank you.                       */  
+/*                                                                                 */  
+library(FRAM512_ss_1.62_-40) {
+	delay_model		: table_lookup;
+	time_unit		: "1ns";
+	voltage_unit		: "1V";
+	current_unit		: "1mA";
+	leakage_power_unit	: "1mW";
+	nom_process		: 1;
+	nom_temperature         : -40;
+	nom_voltage		: 1.62;
+	capacitive_load_unit	 (1,pf);
+
+	pulling_resistance_unit	: "1kohm";
+
+	/* additional header data */
+	default_cell_leakage_power      : 0;
+	default_fanout_load		: 1;
+	default_inout_pin_cap		: 0.005;
+	default_input_pin_cap		: 0.005;
+	default_output_pin_cap		: 0.0;
+	default_max_transition		: 3.000;
+
+      /* default attributes */
+      default_leakage_power_density : 0.0;
+      slew_derate_from_library      : 1.000;
+      slew_lower_threshold_pct_fall : 10.000;
+      slew_upper_threshold_pct_fall : 90.000;
+      slew_lower_threshold_pct_rise : 10.000;
+      slew_upper_threshold_pct_rise : 90.000;
+      input_threshold_pct_fall      : 50.000;
+      input_threshold_pct_rise      : 50.000;
+      output_threshold_pct_fall     : 50.000;
+      output_threshold_pct_rise     : 50.000;
+
+ 	/* k-factors */
+ 	k_process_cell_fall             : 1;
+ 	k_process_cell_leakage_power    : 0;
+ 	k_process_cell_rise             : 1;
+ 	k_process_fall_transition       : 1;
+ 	k_process_hold_fall             : 1;
+ 	k_process_hold_rise             : 1;
+ 	k_process_internal_power        : 0;
+ 	k_process_min_pulse_width_high  : 1;
+ 	k_process_min_pulse_width_low   : 1;
+ 	k_process_pin_cap               : 0;
+ 	k_process_recovery_fall         : 1;
+ 	k_process_recovery_rise         : 1;
+ 	k_process_rise_transition       : 1;
+ 	k_process_setup_fall            : 1;
+ 	k_process_setup_rise            : 1;
+ 	k_process_wire_cap              : 0;
+ 	k_process_wire_res              : 0;
+	k_temp_cell_fall                : 0.000;
+	k_temp_cell_rise		: 0.000;
+	k_temp_hold_fall                : 0.000;
+	k_temp_hold_rise                : 0.000;
+	k_temp_min_pulse_width_high     : 0.000;
+	k_temp_min_pulse_width_low      : 0.000;
+	k_temp_min_period               : 0.000;
+	k_temp_rise_propagation         : 0.000;
+	k_temp_fall_propagation         : 0.000;
+	k_temp_rise_transition          : 0.0;
+	k_temp_fall_transition          : 0.0;
+	k_temp_recovery_fall            : 0.000;
+	k_temp_recovery_rise            : 0.000;
+	k_temp_setup_fall               : 0.000;
+	k_temp_setup_rise               : 0.000;
+	k_volt_cell_fall                : 0.000;
+	k_volt_cell_rise                : 0.000;
+	k_volt_hold_fall                : 0.000;
+	k_volt_hold_rise                : 0.000;
+	k_volt_min_pulse_width_high     : 0.000;
+	k_volt_min_pulse_width_low      : 0.000;
+	k_volt_min_period               : 0.000;
+	k_volt_rise_propagation         : 0.000;
+	k_volt_fall_propagation         : 0.000;
+	k_volt_rise_transition	        : 0.0;
+	k_volt_fall_transition	        : 0.0;
+	k_volt_recovery_fall            : 0.000;
+	k_volt_recovery_rise            : 0.000;
+	k_volt_setup_fall               : 0.000;
+	k_volt_setup_rise               : 0.000;
+
+
+        operating_conditions(ss_1.62_-40) {
+		process	         : 1;
+		temperature	 : -40;
+		voltage	         : 1.62;
+		tree_type	 : balanced_tree;
+	}
+        default_operating_conditions : ss_1.62_-40;
+	  wire_load("sample") {
+		resistance	 : 1.6e-05;
+		capacitance	 : 0.0002;
+		area	 : 1.7;
+  		slope	 : 500;
+		fanout_length	 (1,500);
+	}
+        lu_table_template(FRAM512_bist_mux_delay_template) {
+           variable_1 : input_net_transition;
+           variable_2 : total_output_net_capacitance;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+        lu_table_template(FRAM512_mux_mem_out_delay_template) {
+           variable_1 : input_net_transition;
+           variable_2 : total_output_net_capacitance;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+        lu_table_template(FRAM512_mem_out_delay_template) {
+           variable_1 : input_net_transition;
+           variable_2 : total_output_net_capacitance;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+	  lu_table_template(FRAM512_bist_mux_slew_template) {
+           variable_1 : total_output_net_capacitance;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+	  lu_table_template(FRAM512_mem_out_slew_template) {
+           variable_1 : total_output_net_capacitance;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+	  lu_table_template(FRAM512_clk_setup_constraint_template) {
+           variable_1 : related_pin_transition;
+           variable_2 : constrained_pin_transition;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+	  lu_table_template(FRAM512_constraint_template) {
+           variable_1 : related_pin_transition;
+           variable_2 : constrained_pin_transition;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+        
+     power_lut_template(FRAM512_energy_template_clkslew_load) {
+           variable_1 : input_transition_time;
+           variable_2 : total_output_net_capacitance;
+               index_1 ("1000, 1001");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+        
+     power_lut_template(FRAM512_energy_template_sigslew_load) {
+           variable_1 : input_transition_time;
+           variable_2 : total_output_net_capacitance;
+               index_1 ("1000, 1001");
+               index_2 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+      power_lut_template(FRAM512_energy_template_load) {
+           variable_1 : total_output_net_capacitance;
+               index_1 ("1000, 1001, 1002, 1003, 1004, 1005, 1006");
+        }
+      power_lut_template(FRAM512_energy_template_clkslew) {
+           variable_1 : input_transition_time;
+               index_1 ("1000, 1001");
+        }
+      power_lut_template(FRAM512_energy_template_sigslew) {
+           variable_1 : input_transition_time;
+               index_1 ("1000, 1001");
+        }
+	library_features(report_delay_calculation);
+	type (FRAM512_DATA) {
+		base_type : array ;
+		data_type : bit ;
+		bit_width : 48;
+		bit_from : 47;
+		bit_to : 0 ;
+		downto : true ;
+	}
+
+	type (FRAM512_ADDRESS) {
+		base_type : array ;
+		data_type : bit ;
+		bit_width : 9;
+		bit_from : 8;
+		bit_to : 0 ;
+		downto : true ;
+	}
+        type (FRAM512_S) {
+		base_type : array ;
+		data_type : bit ;
+		bit_width : 3;
+		bit_from : 2;
+		bit_to : 0 ;
+		downto : true ;
+	}
+
+
+cell(FRAM512) {
+	area		 : 336235.737;
+	dont_use	 : TRUE;
+	dont_touch	 : TRUE;
+      interface_timing : TRUE;
+	memory() {
+		type : ram;
+		address_width : 9;
+		word_width : 48;
+	}
+
+        bus(QA)   {
+            bus_type : FRAM512_DATA;
+		direction : output;
+		max_capacitance : 1.720;
+                memory_read() {
+			address : AA;
+		}
+                timing() {
+                        related_pin :   "CLKA" ;
+                        timing_type : rising_edge ;
+                        timing_sense : non_unate;
+                        
+              cell_rise(FRAM512_mem_out_delay_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.000, 0.060, 0.120, 0.240, 0.560, 1.120, 1.720");
+                        values(\
+			"2.646, 2.723, 2.797, 2.941, 3.327, 4.000, 4.723",\
+			"2.661, 2.743, 2.815, 2.961, 3.345, 4.016, 4.741",\
+			"2.673, 2.754, 2.825, 2.972, 3.355, 4.030, 4.750",\
+			"2.682, 2.762, 2.836, 2.981, 3.366, 4.039, 4.760",\
+			"2.672, 2.750, 2.822, 2.970, 3.353, 4.029, 4.747",\
+			"2.606, 2.687, 2.760, 2.904, 3.290, 3.963, 4.683",\
+			"2.513, 2.592, 2.665, 2.810, 3.194, 3.869, 4.590"\
+                        );
+                        }
+                        rise_transition(FRAM512_mem_out_slew_template) {
+                        index_1("0.000, 0.060, 0.120, 0.240, 0.560, 1.120, 1.720");
+			values("0.042, 0.180, 0.325, 0.619, 1.408, 2.785, 4.257");
+                        }
+                        
+               cell_fall(FRAM512_mem_out_delay_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.000, 0.060, 0.120, 0.240, 0.560, 1.120, 1.720");
+                        values(\
+			"2.597, 2.671, 2.726, 2.829, 3.112, 3.602, 4.128",\
+			"2.612, 2.691, 2.744, 2.850, 3.131, 3.619, 4.146",\
+			"2.624, 2.702, 2.754, 2.860, 3.140, 3.632, 4.156",\
+			"2.634, 2.710, 2.765, 2.869, 3.151, 3.641, 4.166",\
+			"2.623, 2.699, 2.751, 2.858, 3.139, 3.630, 4.153",\
+			"2.557, 2.636, 2.688, 2.793, 3.076, 3.564, 4.088",\
+			"2.464, 2.540, 2.594, 2.698, 2.979, 3.471, 3.996"\
+                        );
+                        }
+                        
+                        fall_transition(FRAM512_mem_out_slew_template) {
+                        index_1("0.000, 0.060, 0.120, 0.240, 0.560, 1.120, 1.720");
+			values("0.045, 0.132, 0.215, 0.393, 0.886, 1.761, 2.678");
+                        }
+            }
+        }
+        pin(CLKA)   {
+		direction : input;
+		capacitance : 0.084;
+                clock : true;
+                max_transition : 3.000;
+                timing() {
+                        related_pin     : "CLKB" ;
+			when : "!CENA & !CENB";
+                        sdf_cond : "clkconfB_flag";
+                        timing_type     : setup_rising ;
+                        rise_constraint(FRAM512_clk_setup_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                         "3.493, 3.493, 3.493, 3.493, 3.493, 3.493, 3.493",\
+                         "3.493, 3.493, 3.493, 3.493, 3.493, 3.493, 3.493",\
+                         "3.493, 3.493, 3.493, 3.493, 3.493, 3.493, 3.493",\
+                         "3.493, 3.493, 3.493, 3.493, 3.493, 3.493, 3.493",\
+                         "3.493, 3.493, 3.493, 3.493, 3.493, 3.493, 3.493",\
+                         "3.493, 3.493, 3.493, 3.493, 3.493, 3.493, 3.493",\
+                         "3.493, 3.493, 3.493, 3.493, 3.493, 3.493, 3.493"\
+                        );
+                        }
+                 }
+                min_pulse_width_high  : 0.060 ;
+                min_pulse_width_low   : 0.210 ;
+                min_period            : 3.493 ;
+
+                internal_power(){
+                        when : "(!CENA )";
+                        
+                        rise_power(FRAM512_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("60.986, 60.986")
+                        }
+                        
+                        fall_power(FRAM512_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.000, 0.000")
+                        }
+                }
+                 internal_power(){
+                        when : "(CENA)";
+
+                        rise_power(FRAM512_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.021, 0.021")
+                        }
+
+                        fall_power(FRAM512_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.000, 0.000")
+                        }
+                        }
+                }
+
+        pin(CENA)   {
+                direction : input;
+                capacitance : 0.009;
+                timing() {
+                        related_pin     : CLKA;
+                        timing_type     : setup_rising ;
+                        
+                        rise_constraint(FRAM512_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+			"0.474, 0.494, 0.510, 0.529, 0.552, 0.557, 0.541",\
+			"0.461, 0.480, 0.496, 0.516, 0.537, 0.538, 0.533",\
+			"0.452, 0.475, 0.487, 0.511, 0.530, 0.536, 0.524",\
+			"0.443, 0.462, 0.476, 0.493, 0.520, 0.531, 0.518",\
+			"0.456, 0.476, 0.488, 0.514, 0.532, 0.540, 0.529",\
+			"0.533, 0.552, 0.562, 0.585, 0.611, 0.608, 0.595",\
+			"0.637, 0.651, 0.661, 0.679, 0.698, 0.701, 0.686"\
+                        );
+                        }
+                        
+                        fall_constraint(FRAM512_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+			"0.537, 0.555, 0.585, 0.655, 0.801, 0.997, 1.174",\
+			"0.526, 0.547, 0.577, 0.649, 0.793, 0.988, 1.164",\
+			"0.552, 0.564, 0.603, 0.667, 0.808, 1.003, 1.182",\
+			"0.600, 0.609, 0.659, 0.713, 0.858, 1.049, 1.238",\
+			"0.714, 0.739, 0.778, 0.830, 0.986, 1.166, 1.232",\
+			"0.897, 0.908, 0.945, 0.998, 1.161, 1.340, 1.428",\
+			"1.144, 1.055, 1.051, 1.132, 1.215, 1.506, 1.678"\
+                        );
+                        }
+                } 
+                timing() {
+                        related_pin     : CLKA;
+                        timing_type     : hold_rising ;
+                        
+                        rise_constraint(FRAM512_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100"\
+                        );
+                        }
+                        
+                        fall_constraint(FRAM512_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100"\
+                        );
+                        }
+               }
+        }
+
+
+        bus(AA)   {
+                bus_type : FRAM512_ADDRESS;
+                direction : input;
+                capacitance : 0.005;
+                timing() {
+                        related_pin     : CLKA;
+			when : "!CENA";
+                        sdf_cond : "CEA_flag";
+                        timing_type     : setup_rising ;
+                        
+                        rise_constraint(FRAM512_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "1.004, 1.028, 1.053, 1.094, 1.161, 1.213, 1.239",\
+			"0.987, 1.009, 1.034, 1.075, 1.143, 1.194, 1.221",\
+			"0.975, 0.997, 1.023, 1.063, 1.131, 1.184, 1.209",\
+			"0.964, 0.988, 1.012, 1.055, 1.120, 1.176, 1.202",\
+			"0.970, 0.995, 1.021, 1.061, 1.127, 1.177, 1.207",\
+			"1.028, 1.050, 1.076, 1.121, 1.185, 1.242, 1.262",\
+			"1.117, 1.139, 1.165, 1.206, 1.273, 1.325, 1.357"\
+			);
+                        }
+                        
+                        fall_constraint(FRAM512_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "1.105, 1.127, 1.158, 1.223, 1.404, 1.631, 1.808",\
+			"1.086, 1.108, 1.141, 1.204, 1.387, 1.612, 1.791",\
+			"1.074, 1.096, 1.129, 1.193, 1.375, 1.601, 1.779",\
+			"1.063, 1.086, 1.118, 1.184, 1.364, 1.590, 1.769",\
+			"1.069, 1.095, 1.123, 1.189, 1.370, 1.596, 1.775",\
+			"1.127, 1.149, 1.182, 1.251, 1.430, 1.654, 1.832",\
+			"1.222, 1.244, 1.276, 1.335, 1.519, 1.748, 1.922"\
+			);
+                        }
+                } 
+                timing() {
+                        related_pin     : CLKA;
+			when : "!CENA";
+                        sdf_cond : "CEA_flag";
+                        timing_type     : hold_rising ;
+                        
+                        rise_constraint(FRAM512_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "0.627, 0.605, 0.579, 0.539, 0.473, 0.421, 0.396",\
+			"0.645, 0.623, 0.597, 0.557, 0.490, 0.439, 0.414",\
+			"0.656, 0.636, 0.609, 0.570, 0.502, 0.450, 0.426",\
+			"0.667, 0.646, 0.619, 0.579, 0.513, 0.458, 0.435",\
+			"0.659, 0.639, 0.613, 0.573, 0.507, 0.454, 0.430",\
+			"0.604, 0.581, 0.554, 0.516, 0.450, 0.397, 0.372",\
+			"0.514, 0.494, 0.468, 0.428, 0.367, 0.367, 0.367"\
+			);
+                        }
+                        
+                        fall_constraint(FRAM512_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "0.380, 0.357, 0.326, 0.261, 0.162, 0.162, 0.162",\
+			"0.398, 0.376, 0.344, 0.280, 0.162, 0.162, 0.162",\
+			"0.410, 0.387, 0.356, 0.291, 0.162, 0.162, 0.162",\
+			"0.420, 0.397, 0.366, 0.301, 0.162, 0.162, 0.162",\
+			"0.413, 0.391, 0.359, 0.294, 0.162, 0.162, 0.162",\
+			"0.357, 0.332, 0.301, 0.238, 0.162, 0.162, 0.162",\
+			"0.267, 0.246, 0.214, 0.162, 0.162, 0.162, 0.162"\
+			);
+                        }
+               }
+                internal_power(){
+                        when : "CENA";
+                        
+                        rise_power(FRAM512_energy_template_sigslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.195, 0.195")
+                        }
+                        
+                        fall_power(FRAM512_energy_template_sigslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.195, 0.195")
+                        }
+                }
+        }
+        pin(CLKB)   {
+		direction : input;
+		capacitance : 0.084;
+                clock : true;
+                max_transition : 3.000;
+                timing() {
+                        related_pin     : "CLKA" ;
+			when : "!CENA & !CENB";
+                        sdf_cond : "clkconfA_flag";
+                        timing_type     : setup_rising ;
+                        rise_constraint(FRAM512_clk_setup_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                         "3.493, 3.493, 3.493, 3.493, 3.493, 3.493, 3.493",\
+                         "3.493, 3.493, 3.493, 3.493, 3.493, 3.493, 3.493",\
+                         "3.493, 3.493, 3.493, 3.493, 3.493, 3.493, 3.493",\
+                         "3.493, 3.493, 3.493, 3.493, 3.493, 3.493, 3.493",\
+                         "3.493, 3.493, 3.493, 3.493, 3.493, 3.493, 3.493",\
+                         "3.493, 3.493, 3.493, 3.493, 3.493, 3.493, 3.493",\
+                         "3.493, 3.493, 3.493, 3.493, 3.493, 3.493, 3.493"\
+                        );
+                        }
+                 }
+                 min_pulse_width_high : 0.060 ;
+                 min_pulse_width_low  : 0.210 ;
+                 min_period           : 3.493 ;
+
+                 internal_power(){
+                        when : "(!CENB) \
+                                 ";
+                        rise_power(FRAM512_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("158.444, 158.444")
+                        }
+                        
+                        fall_power(FRAM512_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.000, 0.000")
+                        }
+                }
+                internal_power(){
+
+                       when : "(CENB)";
+                        
+                        rise_power(FRAM512_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.021, 0.021")
+                        }
+                        
+                        fall_power(FRAM512_energy_template_clkslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.000, 0.000")
+                        }
+                }
+        }
+        pin(CENB)   {
+                direction : input;
+                capacitance : 0.009;
+                timing() {
+                        related_pin     : CLKB;
+                        timing_type     : setup_rising ;
+                        
+                        rise_constraint(FRAM512_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+			"0.474, 0.494, 0.510, 0.529, 0.552, 0.557, 0.541",\
+			"0.461, 0.480, 0.496, 0.516, 0.537, 0.538, 0.533",\
+			"0.452, 0.475, 0.487, 0.511, 0.530, 0.536, 0.524",\
+			"0.443, 0.462, 0.476, 0.493, 0.520, 0.531, 0.518",\
+			"0.456, 0.476, 0.488, 0.514, 0.532, 0.540, 0.529",\
+			"0.533, 0.552, 0.562, 0.585, 0.611, 0.608, 0.595",\
+			"0.637, 0.651, 0.661, 0.679, 0.698, 0.701, 0.686"\
+                        );
+                        }
+                        
+                        fall_constraint(FRAM512_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+			"0.537, 0.555, 0.585, 0.655, 0.801, 0.997, 1.174",\
+			"0.526, 0.547, 0.577, 0.649, 0.793, 0.988, 1.164",\
+			"0.552, 0.564, 0.603, 0.667, 0.808, 1.003, 1.182",\
+			"0.600, 0.609, 0.659, 0.713, 0.858, 1.049, 1.238",\
+			"0.714, 0.739, 0.778, 0.830, 0.986, 1.166, 1.232",\
+			"0.897, 0.908, 0.945, 0.998, 1.161, 1.340, 1.428",\
+			"1.144, 1.055, 1.051, 1.132, 1.215, 1.506, 1.678"\
+                        );
+                        }
+                } 
+                timing() {
+                        related_pin     : CLKB;
+                        timing_type     : hold_rising ;
+                        
+                        rise_constraint(FRAM512_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100"\
+                        );
+                        }
+                        
+                        fall_constraint(FRAM512_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100",\
+			"0.100, 0.100, 0.100, 0.100, 0.100, 0.100, 0.100"\
+                        );
+                        }
+               }
+        }
+        bus(AB)   {
+                bus_type : FRAM512_ADDRESS;
+                direction : input;
+                capacitance : 0.005;
+               timing() {
+                        related_pin     : CLKB;
+			when : "!CENB";
+                        sdf_cond : "CEB_flag";
+                        timing_type     : setup_rising ;
+                        
+                        rise_constraint(FRAM512_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "1.004, 1.028, 1.053, 1.094, 1.161, 1.213, 1.239",\
+			"0.987, 1.009, 1.034, 1.075, 1.143, 1.194, 1.221",\
+			"0.975, 0.997, 1.023, 1.063, 1.131, 1.184, 1.209",\
+			"0.964, 0.988, 1.012, 1.055, 1.120, 1.176, 1.202",\
+			"0.970, 0.995, 1.021, 1.061, 1.127, 1.177, 1.207",\
+			"1.028, 1.050, 1.076, 1.121, 1.185, 1.242, 1.262",\
+			"1.117, 1.139, 1.165, 1.206, 1.273, 1.325, 1.357"\
+			);
+                        }
+                        
+                        fall_constraint(FRAM512_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "1.105, 1.127, 1.158, 1.223, 1.404, 1.631, 1.808",\
+			"1.086, 1.108, 1.141, 1.204, 1.387, 1.612, 1.791",\
+			"1.074, 1.096, 1.129, 1.193, 1.375, 1.601, 1.779",\
+			"1.063, 1.086, 1.118, 1.184, 1.364, 1.590, 1.769",\
+			"1.069, 1.095, 1.123, 1.189, 1.370, 1.596, 1.775",\
+			"1.127, 1.149, 1.182, 1.251, 1.430, 1.654, 1.832",\
+			"1.222, 1.244, 1.276, 1.335, 1.519, 1.748, 1.922"\
+			);
+                        }
+                } 
+               timing() {
+                        related_pin     : CLKB;
+			when : "!CENB";
+                        sdf_cond : "CEB_flag";
+                        timing_type     : hold_rising ;
+                        
+                        rise_constraint(FRAM512_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "0.627, 0.605, 0.579, 0.539, 0.473, 0.421, 0.396",\
+			"0.645, 0.623, 0.597, 0.557, 0.490, 0.439, 0.414",\
+			"0.656, 0.636, 0.609, 0.570, 0.502, 0.450, 0.426",\
+			"0.667, 0.646, 0.619, 0.579, 0.513, 0.458, 0.435",\
+			"0.659, 0.639, 0.613, 0.573, 0.507, 0.454, 0.430",\
+			"0.604, 0.581, 0.554, 0.516, 0.450, 0.397, 0.372",\
+			"0.514, 0.494, 0.468, 0.428, 0.367, 0.367, 0.367"\
+			);
+                        }
+                        
+                        fall_constraint(FRAM512_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "0.380, 0.357, 0.326, 0.261, 0.162, 0.162, 0.162",\
+			"0.398, 0.376, 0.344, 0.280, 0.162, 0.162, 0.162",\
+			"0.410, 0.387, 0.356, 0.291, 0.162, 0.162, 0.162",\
+			"0.420, 0.397, 0.366, 0.301, 0.162, 0.162, 0.162",\
+			"0.413, 0.391, 0.359, 0.294, 0.162, 0.162, 0.162",\
+			"0.357, 0.332, 0.301, 0.238, 0.162, 0.162, 0.162",\
+			"0.267, 0.246, 0.214, 0.162, 0.162, 0.162, 0.162"\
+			);
+                        }
+               }
+               internal_power(){
+	
+                        when : "CENB";
+                        
+                        rise_power(FRAM512_energy_template_sigslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.195, 0.195")
+                        }
+                        
+                        fall_power(FRAM512_energy_template_sigslew) {
+                        index_1 ("0.000, 1.000");
+                        values ("0.195, 0.195")
+                        }
+                }
+        }
+        bus(DB)   {
+                bus_type : FRAM512_DATA;
+                memory_write() {
+                        address : AB;
+                        clocked_on : "CLKB";
+                }
+                direction : input;
+                capacitance : 0.005;
+                timing() {
+                        related_pin     : CLKB;
+
+			when : "!CENB";
+                        sdf_cond : "CEB_flag";
+                        timing_type     : setup_rising ;
+                        
+                        rise_constraint(FRAM512_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "0.779, 0.797, 0.812, 0.833, 0.863, 0.873, 0.869",\
+			"0.762, 0.779, 0.793, 0.814, 0.845, 0.854, 0.850",\
+			"0.750, 0.767, 0.781, 0.802, 0.833, 0.846, 0.839",\
+			"0.738, 0.758, 0.770, 0.793, 0.822, 0.838, 0.834",\
+			"0.745, 0.765, 0.779, 0.800, 0.828, 0.838, 0.838",\
+			"0.803, 0.820, 0.834, 0.859, 0.887, 0.904, 0.892",\
+			"0.891, 0.908, 0.922, 0.944, 0.974, 0.985, 0.987"\
+			);
+                        }
+                        
+                        fall_constraint(FRAM512_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "0.529, 0.553, 0.584, 0.646, 0.786, 0.953, 1.090",\
+			"0.511, 0.534, 0.566, 0.627, 0.768, 0.934, 1.072",\
+			"0.500, 0.522, 0.554, 0.616, 0.756, 0.922, 1.059",\
+			"0.490, 0.513, 0.543, 0.607, 0.745, 0.912, 1.049",\
+			"0.494, 0.520, 0.551, 0.614, 0.755, 0.917, 1.056",\
+			"0.552, 0.575, 0.607, 0.673, 0.811, 0.980, 1.113",\
+			"0.641, 0.664, 0.695, 0.758, 0.899, 1.064, 1.207"\
+			);
+                        }
+                } 
+                timing() {
+                        related_pin     : CLKB;
+			when : "!CENB";
+                        sdf_cond : "CEB_flag";
+                        timing_type     : hold_rising ;
+                        
+                        rise_constraint(FRAM512_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "0.092, 0.075, 0.060, 0.048, 0.048, 0.048, 0.048",\
+			"0.109, 0.093, 0.078, 0.057, 0.048, 0.048, 0.048",\
+			"0.121, 0.107, 0.091, 0.071, 0.048, 0.048, 0.048",\
+			"0.131, 0.116, 0.101, 0.080, 0.048, 0.048, 0.048",\
+			"0.124, 0.110, 0.094, 0.074, 0.048, 0.048, 0.048",\
+			"0.068, 0.052, 0.048, 0.048, 0.048, 0.048, 0.048",\
+			"0.048, 0.048, 0.048, 0.048, 0.048, 0.048, 0.048"\
+			);
+                        }
+                        
+                        fall_constraint(FRAM512_constraint_template) {
+                        index_1("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        index_2("0.020, 0.100, 0.200, 0.400, 1.000, 2.000, 3.000");
+                        values(\
+                        "0.205, 0.182, 0.150, 0.089, 0.030, 0.030, 0.030",\
+			"0.224, 0.201, 0.169, 0.107, 0.030, 0.030, 0.030",\
+			"0.235, 0.213, 0.181, 0.118, 0.030, 0.030, 0.030",\
+			"0.245, 0.222, 0.191, 0.129, 0.030, 0.030, 0.030",\
+			"0.238, 0.216, 0.184, 0.122, 0.030, 0.030, 0.030",\
+			"0.182, 0.158, 0.126, 0.065, 0.030, 0.030, 0.030",\
+			"0.093, 0.071, 0.039, 0.030, 0.030, 0.030, 0.030"\
+			);
+                        }
+               }
+        }
+
+        cell_leakage_power : 0.001134 ;
+        
+}
+}

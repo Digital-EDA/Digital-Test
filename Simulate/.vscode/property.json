@@ -1,0 +1,11 @@
+{
+	"TOOL_CHAIN": "xilinx",
+	"PRJ_NAME": {
+		"FPGA": "FFT_IFFT_IP"
+	},
+	"SOC_MODE": {
+		"soc": "none"
+	},
+	"enableShowlog": false,
+	"Device": "xc7a35tftg256-1"
+}

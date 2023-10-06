@@ -1,0 +1,20 @@
+#========================================
+# List all IPs RTL file here
+# NOTE: no blank line allowed
+#========================================
+
+set search_path [list $search_path \
+/home/xian001/SY13_DATA/RTL/sy1301_20180508/AE210P/ae210p/andes_ip/n10_core/top/hdl \
+/home/xian001/SY13_DATA/RTL/sy1301_20180508/AE210P/ae210p/andes_ip/ae210/top/hdl/include \
+/home/xian001/SY13_DATA/RTL/sy1301_20180508/AE210P/ae210p/andes_ip/peripheral_ip/gpio \
+/home/xian001/SY13_DATA/RTL/sy1301_20180508/CortexM0/integration_kit/logical/user_define \
+/home/xian001/SY13_DATA/RTL/sy1301_20180508/CortexM0/integration_kit/logical/peripheral/gpio \
+/home/xian001/SY13_DATA/RTL/sy1301_20180508/AE210P/ae210p/andes_ip/ae210/define \
+]
+set RTL_FILE_LIST [list \
+/home/xian001/SY13_DATA/RTL/sy1301_20180508/CortexM0/integration_kit/logical/interconnect/sy13.v \
+/home/xian001/SY13_DATA/RTL/sy1301_20180508/CortexM0/integration_kit/logical/cm0ikmcu/verilog/CM0IKMCU.v \
+/home/xian001/SY1301_XIAN/backend/user/cbai/dc/CMOIKMCU/sys_top/20180507_final/result/sys_top_compile1.v \
+/home/xian001/SY1301_XIAN/backend/user/cbai/dc/CMOIKMCU/aoss_wrap/20180512_final/result/aoss_wrap_compile1.v \
+/home/xian001/SY1301_XIAN/backend/user/cbai/dc/ae210_chip/20180508_final/result/ae210_chip_compile1.v \
+]
