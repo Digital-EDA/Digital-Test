@@ -1,0 +1,50 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/11934/Project/Digital-IDE/Digital-Test/lsp/linter
+vdependence_1
+Z1 !s110 1700576438
+!i10b 1
+!s100 1L3L]>oO5UNbT`JWk8I2F1
+IIgLED8NdRzGhBY_234<1k2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1696688297
+8child_1.v
+Fchild_1.v
+L0 1
+Z4 OL;L;10.4;61
+r1
+!s85 0
+31
+Z5 !s108 1700576438.165000
+Z6 !s107 child_2.v|child_1.v|.\parent.v|
+Z7 !s90 .\parent.v|-quiet|-nologo|
+!i113 0
+Z8 o-quiet -nologo -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+vdependence_2
+R1
+!i10b 1
+!s100 LMOKj0lWZZRTkT2OVHa543
+Ibh;z<<=?EQaGZPfGf:Fh52
+R2
+R0
+R3
+8child_2.v
+Fchild_2.v
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8

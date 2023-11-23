@@ -1,0 +1,8 @@
+0.6
+2018.3
+Dec  7 2018
+00:33:28
+C:/Users/11934/Project/Digital-IDE/Digital-Test/lsp/linter/child_1.v,1696688297,verilog,,,,dependence_1,,,,,,,,
+C:/Users/11934/Project/Digital-IDE/Digital-Test/lsp/linter/child_2.v,1696688297,verilog,,,,dependence_2,,,,,,,,
+C:/Users/11934/Project/Digital-IDE/Digital-Test/lsp/linter/dsp.vhd,1692686802,vhdl,,,,dsp,,,,,,,,
+C:/Users/11934/Project/Digital-IDE/Digital-Test/lsp/linter/parent.v,1700548652,verilog,,,C:/Users/11934/Project/Digital-IDE/Digital-Test/lsp/linter/child_1.v;C:/Users/11934/Project/Digital-IDE/Digital-Test/lsp/linter/child_2.v,Main,,,,,,,,

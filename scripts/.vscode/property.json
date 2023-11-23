@@ -6,12 +6,6 @@
 	"soc": {
 		"core": "none"
 	},
-    "arch": {
-        "hardware": {
-            "sim": "./",
-            "src": "./"
-        }
-    },
 	"enableShowLog": false,
 	"device": "none"
 }

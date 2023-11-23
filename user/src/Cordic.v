@@ -2,11 +2,12 @@
 
 
 `include "mult_module.v"
+`define ITER_RAW 32
 
 module Cordic #(
 	parameter XY_BITS      = 12,
 	parameter PH_BITS      = 32,
-	parameter ITERATIONS   = 32,
+	parameter ITERATIONS   = `ITER_RAW,
 	parameter CORDIC_STYLE = "ROTATE",
 	parameter PHASE_ACC    = "ON"
 )(
