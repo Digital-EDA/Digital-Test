@@ -3,5 +3,5 @@ module led (
     output     led   // led out
 );
     assign led = ~key;
-    
+
 endmodule //led

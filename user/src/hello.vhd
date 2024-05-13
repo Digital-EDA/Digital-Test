@@ -8,6 +8,7 @@ entity mux2to1 is
        outp : out std_logic);
 end mux2to1;
 
+
 architecture behavioral of mux2to1 is
 begin
   outp <= a when sel = '0' else b;
