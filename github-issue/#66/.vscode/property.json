@@ -1,0 +1,16 @@
+{
+	"toolChain": "xilinx",
+	"prjName": {
+		"PL": "template"
+	},
+	"soc": {
+		"core": "none"
+	},
+	"enableShowLog": false,
+	"device": "none",
+    "arch": {
+        "hardware": {
+            "src": "./rtl"
+        }
+    }
+}
